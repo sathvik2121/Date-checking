@@ -22,7 +22,7 @@ public class SpringMethodTestApplication {
 
 	public static void main(String[] args) throws InvalidKeyException, DocumentException, URISyntaxException, StorageException  {
 		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
-		Date message2=ob1.run();
+		String message2=ob1.run();
 		System.out.println(message2);
 		SpringApplication.run(SpringMethodTestApplication.class, args);
 	}
@@ -37,7 +37,7 @@ public class SpringMethodTestApplication {
 	
 	@GetMapping("/testing")
 	
-	public Date run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException
+	public String run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException
 	{
 		
 	
@@ -59,7 +59,7 @@ public class SpringMethodTestApplication {
 				
 				blob.downloadAttributes();
 			     Date d1=blob.getProperties().getLastModified();
-			   return d1;
+			   return d1.toString();
 			    
 			     
 			     

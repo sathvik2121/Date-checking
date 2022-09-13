@@ -72,8 +72,12 @@ public class SpringMethodTestApplication {
 				blob.downloadAttributes();
 				
 			     Date d1=blob.getProperties().getLastModified();
-			   
-			    String presentdate= d1.toString();
+			     String presentdate= d1.toString();
+			    // SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+			     //Date datestr= formatter.parse(presentdate);
+			    // String str1= datestr.toString();
+
+			 
 			   
 			  File tempDate=File.createTempFile("Updated Date" , ".txt");
 			  CloudBlockBlob blob1 = container2.getBlockBlobReference("Updated Date.txt");
@@ -88,12 +92,12 @@ public class SpringMethodTestApplication {
 		       // while ((pastdate=br.readLine())!= null)
 		       
 		        SimpleDateFormat formatter1 = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-		        Date datestr1= formatter1.parse(presentdate);
+		        //Date datestr1= formatter1.parse(presentdate);
 		       
 		         Date datestr2=formatter1.parse(pastdate);
 		      
 		         String change=null;
-		        if(datestr1.after(datestr2))
+		        if(d1.after(datestr2))
 		        {
 		        	change="yes";
 		        	 FileWriter myWriter = new FileWriter(tempDate,false);

@@ -99,21 +99,6 @@ public class SpringMethodTestApplication {
 			         String change=null;
 			         System.out.println(datestr1);
 			         System.out.println(datestr2);
-			        if(datestr1.after(datestr2))
-			        {
-			        	change="yes";
-			        	 FileWriter myWriter = new FileWriter(tempDate,false);
-					      myWriter.write(presentdate);
-					      myWriter.close();
-					      blob1.uploadFromFile(tempDate.getAbsolutePath());
-			        }
-			        else 
-			        	change="no";
-			        
-			        os.close();
-			        br.close();
-			      tempDate.deleteOnExit();
-			        return change;
-			  
+			        return datestr1.toString();
 	}
 }

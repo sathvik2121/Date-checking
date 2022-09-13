@@ -66,7 +66,7 @@ public class SpringMethodTestApplication {
 				blobClient = storageAccount.createCloudBlobClient();
 		
 				CloudBlobContainer container2=blobClient.getContainerReference("fileaccess");
-				 CloudBlockBlob blob = container2.getBlockBlobReference("data1.xml");
+				 CloudBlockBlob blob = container2.getBlockBlobReference("outputFile.pdf");
 			
 					
 				blob.downloadAttributes();

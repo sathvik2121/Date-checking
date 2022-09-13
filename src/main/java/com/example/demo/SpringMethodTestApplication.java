@@ -99,6 +99,6 @@ public class SpringMethodTestApplication {
 			         String change=null;
 			         System.out.println(datestr1);
 			         System.out.println(datestr2);
-			        return datestr1.toString();
+			        return datestr2.toString();
 	}
 }

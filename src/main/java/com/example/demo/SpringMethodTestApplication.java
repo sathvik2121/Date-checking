@@ -48,7 +48,7 @@ public class SpringMethodTestApplication {
 	
 	@GetMapping("/testing")
 	
-	public String run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException, IOException, ParseException
+	public Date run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException, IOException, ParseException
 	{
 		
 	
@@ -72,49 +72,8 @@ public class SpringMethodTestApplication {
 				blob.downloadAttributes();
 				
 			     Date d1=blob.getProperties().getLastModified();
-			     String presentdate= d1.toString();
-			    // SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-			     //Date datestr= formatter.parse(presentdate);
-			    // String str1= datestr.toString();
-
-			 
-			   
-			  File tempDate=File.createTempFile("Updated Date" , ".txt");
-			  CloudBlockBlob blob1 = container2.getBlockBlobReference("Updated Date.txt");
-			  OutputStream os=new FileOutputStream(tempDate);
-			  blob1.download(os);
-			  // Creating an object of BufferedReader class
-		        BufferedReader br= new BufferedReader(new FileReader(tempDate));
-		 
-		       
-		        String pastdate;
-		       pastdate = new String(Files.readAllBytes(Paths.get(tempDate.getAbsolutePath())));
-		       // while ((pastdate=br.readLine())!= null)
-		       
-		        SimpleDateFormat formatter1 = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
-		        //Date datestr1= formatter1.parse(presentdate);
-		       
-		         Date datestr2=formatter1.parse(pastdate);
-		      
-		         String change=null;
-		         System.out.println(d1);
-		         System.out.println(datestr2);
-		        if(d1.after(datestr2))
-		        {
-		        	change="no";
-		        	 FileWriter myWriter = new FileWriter(tempDate,false);
-				      myWriter.write(presentdate);
-				      myWriter.close();
-				      blob1.uploadFromFile(tempDate.getAbsolutePath());
-		        }
-		        else 
-		        	change="yes";
-		        
-		        os.close();
-		        br.close();
-		      tempDate.deleteOnExit();
-		        return change;
-			 
+			  
+			     return d1;
 			  
 }
 }

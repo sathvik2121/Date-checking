@@ -33,7 +33,7 @@ public class SpringMethodTestApplication {
 
 	public static void main(String[] args) throws InvalidKeyException, DocumentException, URISyntaxException, StorageException, IOException, ParseException   {
 		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
-		String message2=ob1.run();
+		boolean message2=ob1.run();
 		System.out.println(message2);
 		SpringApplication.run(SpringMethodTestApplication.class, args);
 	}
@@ -48,7 +48,7 @@ public class SpringMethodTestApplication {
 	
 	@GetMapping("/testing")
 	
-	public String run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException, IOException, ParseException
+	public boolean run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException, IOException, ParseException
 	{
 		
 	
@@ -99,6 +99,6 @@ public class SpringMethodTestApplication {
 			         String change=null;
 			         System.out.println(datestr1);
 			         System.out.println(datestr2);
-			        return datestr2.toString();
+			        return datestr1.after(datestr2);
 	}
 }

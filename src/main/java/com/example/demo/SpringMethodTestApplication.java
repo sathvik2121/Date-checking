@@ -97,16 +97,18 @@ public class SpringMethodTestApplication {
 		         Date datestr2=formatter1.parse(pastdate);
 		      
 		         String change=null;
+		         System.out.println(d1);
+		         System.out.println(datestr2);
 		        if(d1.after(datestr2))
 		        {
-		        	change="yes";
+		        	change="no";
 		        	 FileWriter myWriter = new FileWriter(tempDate,false);
 				      myWriter.write(presentdate);
 				      myWriter.close();
 				      blob1.uploadFromFile(tempDate.getAbsolutePath());
 		        }
 		        else 
-		        	change="no";
+		        	change="yes";
 		        
 		        os.close();
 		        br.close();

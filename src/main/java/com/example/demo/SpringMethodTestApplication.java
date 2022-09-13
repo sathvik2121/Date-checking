@@ -54,7 +54,7 @@ public class SpringMethodTestApplication {
 	
 		 final String storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=pocfiledemoaccess;AccountKey=GY0kWJV+ik5mNByEavFYamMDMu5LecAHNK0VmiD6VPQka7s/4OrrATcBol4jOIxq33ID3yChL0W8+AStDb8VCA==;EndpointSuffix=core.windows.net";
 		   
-			System.out.println("Azure Blob storage quick start sample");
+			//System.out.println("Azure Blob storage quick start sample");
 
 			CloudStorageAccount storageAccount;
 			CloudBlobClient blobClient = null;
@@ -66,7 +66,7 @@ public class SpringMethodTestApplication {
 				blobClient = storageAccount.createCloudBlobClient();
 		
 				CloudBlobContainer container2=blobClient.getContainerReference("fileaccess");
-				 CloudBlockBlob blob = container2.getBlockBlobReference("outputFile.pdf");
+				 CloudBlockBlob blob = container2.getBlockBlobReference("data1.xml");
 			
 					
 				blob.downloadAttributes();

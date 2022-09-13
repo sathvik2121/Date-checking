@@ -5,15 +5,23 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.BufferedReader;
 import java.io.File;
-
-
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.InvalidKeyException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import java.util.Date;
-import java.util.Locale;
+
 
 import com.itextpdf.text.DocumentException;
 import com.microsoft.azure.storage.*;
@@ -23,9 +31,9 @@ import com.microsoft.azure.storage.blob.*;
 @SpringBootApplication
 public class SpringMethodTestApplication {
 
-	public static void main(String[] args) throws InvalidKeyException, DocumentException, URISyntaxException, StorageException  {
+	public static void main(String[] args)   {
 //		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
-//		LocalDateTime message2=ob1.run();
+//		String message2=ob1.run();
 //		System.out.println(message2);
 		SpringApplication.run(SpringMethodTestApplication.class, args);
 	}
@@ -35,12 +43,12 @@ public class SpringMethodTestApplication {
 	public String method2()
 	{
 		//System.out.println("done");
-		return "hello hi pdf generation";
+		return "welcome to datecheck";
 	}
 	
 	@GetMapping("/testing")
 	
-	public Date run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException
+	public String run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException, IOException, ParseException
 	{
 		
 	
@@ -65,11 +73,42 @@ public class SpringMethodTestApplication {
 				
 			     Date d1=blob.getProperties().getLastModified();
 			   
-			     return d1;
-			  
-			     
-			    
-			     
+			    String presentdate= d1.toString();
+			   
+			  File tempDate=File.createTempFile("Updated Date" , ".txt");
+			  CloudBlockBlob blob1 = container2.getBlockBlobReference("Updated Date.txt");
+			  OutputStream os=new FileOutputStream(tempDate);
+			  blob1.download(os);
+			  // Creating an object of BufferedReader class
+		        BufferedReader br= new BufferedReader(new FileReader(tempDate));
+		 
+		       
+		        String pastdate;
+		       pastdate = new String(Files.readAllBytes(Paths.get(tempDate.getAbsolutePath())));
+		       // while ((pastdate=br.readLine())!= null)
+		       
+		        SimpleDateFormat formatter1 = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+		        Date datestr1= formatter1.parse(presentdate);
+		       
+		         Date datestr2=formatter1.parse(pastdate);
+		      
+		         String change=null;
+		        if(datestr1.compareTo(datestr2)>0)
+		        {
+		        	change="yes";
+		        	 FileWriter myWriter = new FileWriter(tempDate,false);
+				      myWriter.write(presentdate);
+				      myWriter.close();
+				      blob1.uploadFromFile(tempDate.getAbsolutePath());
+		        }
+		        else 
+		        	change="no";
+		        
+		        os.close();
+		        br.close();
+		      tempDate.deleteOnExit();
+		        return change;
+			 
 			  
 }
 }

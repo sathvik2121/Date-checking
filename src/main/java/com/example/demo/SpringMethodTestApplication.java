@@ -31,10 +31,10 @@ import com.microsoft.azure.storage.blob.*;
 @SpringBootApplication
 public class SpringMethodTestApplication {
 
-	public static void main(String[] args)   {
-//		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
-//		String message2=ob1.run();
-//		System.out.println(message2);
+	public static void main(String[] args) throws InvalidKeyException, DocumentException, URISyntaxException, StorageException, IOException, ParseException   {
+		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
+		String message2=ob1.run();
+		System.out.println(message2);
 		SpringApplication.run(SpringMethodTestApplication.class, args);
 	}
 
@@ -93,7 +93,7 @@ public class SpringMethodTestApplication {
 		         Date datestr2=formatter1.parse(pastdate);
 		      
 		         String change=null;
-		        if(datestr1.compareTo(datestr2)>0)
+		        if(datestr1.after(datestr2))
 		        {
 		        	change="yes";
 		        	 FileWriter myWriter = new FileWriter(tempDate,false);

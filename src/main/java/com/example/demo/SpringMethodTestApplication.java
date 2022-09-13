@@ -10,7 +10,10 @@ import java.io.File;
 
 import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 import com.itextpdf.text.DocumentException;
 import com.microsoft.azure.storage.*;
@@ -21,9 +24,9 @@ import com.microsoft.azure.storage.blob.*;
 public class SpringMethodTestApplication {
 
 	public static void main(String[] args) throws InvalidKeyException, DocumentException, URISyntaxException, StorageException  {
-		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
-		String message2=ob1.run();
-		System.out.println(message2);
+//		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
+//		LocalDateTime message2=ob1.run();
+//		System.out.println(message2);
 		SpringApplication.run(SpringMethodTestApplication.class, args);
 	}
 
@@ -31,7 +34,7 @@ public class SpringMethodTestApplication {
 	
 	public String method2()
 	{
-		System.out.println("done");
+		//System.out.println("done");
 		return "hello hi pdf generation";
 	}
 	
@@ -56,12 +59,16 @@ public class SpringMethodTestApplication {
 		
 				CloudBlobContainer container2=blobClient.getContainerReference("fileaccess");
 				 CloudBlockBlob blob = container2.getBlockBlobReference("outputFile.pdf");
-				
+			
+					
 				blob.downloadAttributes();
+				
 			     Date d1=blob.getProperties().getLastModified();
-			   return d1.toString();
-			    
+			   
+			     return d1.toString();
+			  
 			     
+			    
 			     
 			  
 }

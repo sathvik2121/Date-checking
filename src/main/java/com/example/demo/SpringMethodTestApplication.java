@@ -40,7 +40,7 @@ public class SpringMethodTestApplication {
 	
 	@GetMapping("/testing")
 	
-	public String run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException
+	public Date run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException
 	{
 		
 	
@@ -65,7 +65,7 @@ public class SpringMethodTestApplication {
 				
 			     Date d1=blob.getProperties().getLastModified();
 			   
-			     return d1.toString();
+			     return d1;
 			  
 			     
 			    

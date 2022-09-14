@@ -73,19 +73,14 @@ public class SpringMethodTestApplication {
 				
 			     Date d1=blob.getProperties().getLastModified();
 			     String presentdate= d1.toString();
-				    // SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-				     //Date datestr= formatter.parse(presentdate);
-				    // String str1= datestr.toString();
-
+				    
 				 
 				   
 				  File tempDate=File.createTempFile("Updated Date" , ".txt");
 				  CloudBlockBlob blob1 = container2.getBlockBlobReference("Updated Date.txt");
 				  OutputStream os=new FileOutputStream(tempDate);
 				  blob1.download(os);
-				  // Creating an object of BufferedReader class
-			       // BufferedReader br= new BufferedReader(new FileReader(tempDate));
-			 
+				 
 			       
 			        String pastdate;
 			       pastdate = new String(Files.readAllBytes(Paths.get(tempDate.getAbsolutePath())));
@@ -107,7 +102,11 @@ public class SpringMethodTestApplication {
 					      myWriter.close();
 					      blob1.uploadFromFile(tempDate.getAbsolutePath());
 			         }
+			         else 
+			         { change="no";}
 			         
+			         os.close();
+			         tempDate.deleteOnExit();
 			         return change;
 			        
 	}

@@ -99,7 +99,7 @@ public class SpringMethodTestApplication {
 			         String change=null;
 			         System.out.println(datestr1);
 			         System.out.println(datestr2);
-			         if(datestr1.after(datestr2))
+			         if(!datestr1.after(datestr2))
 			         {
 			        	 change="yes";
 			         }

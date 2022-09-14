@@ -48,7 +48,7 @@ public class SpringMethodTestApplication {
 	
 	@GetMapping("/testing")
 	
-	public boolean run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException, IOException, ParseException
+	public String run() throws DocumentException, URISyntaxException, StorageException, InvalidKeyException, IOException, ParseException
 	{
 		
 	
@@ -84,7 +84,7 @@ public class SpringMethodTestApplication {
 				  OutputStream os=new FileOutputStream(tempDate);
 				  blob1.download(os);
 				  // Creating an object of BufferedReader class
-			        BufferedReader br= new BufferedReader(new FileReader(tempDate));
+			       // BufferedReader br= new BufferedReader(new FileReader(tempDate));
 			 
 			       
 			        String pastdate;
@@ -99,6 +99,12 @@ public class SpringMethodTestApplication {
 			         String change=null;
 			         System.out.println(datestr1);
 			         System.out.println(datestr2);
-			        return datestr1.after(datestr2);
+			         if(datestr1.after(datestr2))
+			         {
+			        	 change="yes";
+			         }
+			         
+			         return change;
+			        
 	}
 }

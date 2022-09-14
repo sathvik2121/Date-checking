@@ -33,7 +33,7 @@ public class SpringMethodTestApplication {
 
 	public static void main(String[] args) throws InvalidKeyException, DocumentException, URISyntaxException, StorageException, IOException, ParseException   {
 		SpringMethodTestApplication ob1=new SpringMethodTestApplication();
-		boolean message2=ob1.run();
+		String message2=ob1.run();
 		System.out.println(message2);
 		SpringApplication.run(SpringMethodTestApplication.class, args);
 	}

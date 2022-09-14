@@ -66,7 +66,7 @@ public class SpringMethodTestApplication {
 				blobClient = storageAccount.createCloudBlobClient();
 		
 				CloudBlobContainer container2=blobClient.getContainerReference("fileaccess");
-				 CloudBlockBlob blob = container2.getBlockBlobReference("outputFile.pdf");
+				 CloudBlockBlob blob = container2.getBlockBlobReference("data1.xml");
 			
 					
 				blob.downloadAttributes();
@@ -92,8 +92,8 @@ public class SpringMethodTestApplication {
 			         Date datestr2=formatter1.parse(pastdate);
 			      
 			         String change=null;
-			         System.out.println(datestr1);
-			         System.out.println(datestr2);
+			         //System.out.println(datestr1);
+			         //System.out.println(datestr2);
 			         if(datestr1.after(datestr2))
 			         {
 			        	 change="yes";

@@ -102,6 +102,10 @@ public class SpringMethodTestApplication {
 			         if(!datestr1.after(datestr2))
 			         {
 			        	 change="yes";
+			        	 FileWriter myWriter = new FileWriter(tempDate,false);
+					      myWriter.write(presentdate);
+					      myWriter.close();
+					      blob1.uploadFromFile(tempDate.getAbsolutePath());
 			         }
 			         
 			         return change;
